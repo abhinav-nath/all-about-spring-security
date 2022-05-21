@@ -1,5 +1,17 @@
 # Spring Security
 
+## Authentication vs Authorization
+
+**Authentication** confirms that users are who they say they are.
+It is the act of validating that users are whom they claim to be.
+This is the first step in any security process.
+
+**Authorization** gives those users permission to access a resource.
+In secure environments, authorization must always follow authentication.
+Users should first prove that their identities are genuine before an organization's administrators grant them access to the requested resources.
+
+## High level working of Spring Security
+
 In Spring Boot applications, all the incoming requests first come to the `DispatcherServlet` which acts like a **front controller**, it then forwards the request to the respective RestController.
 
 Security should be implemented even before the request comes to the DispatcherServlet.
