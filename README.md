@@ -35,6 +35,11 @@ For each type of auth, there will be a different filter chain.
 
 ### What is the security filter chain?
 
+Spring Security’s Servlet support is based on Servlet Filters, so it is helpful to look at the role of Filters generally first. The picture below shows the typical layering of the handlers for a single HTTP request.
+
+Spring provides a Filter implementation named `DelegatingFilterProxy` that allows bridging between the Servlet container’s lifecycle and Spring’s `ApplicationContext`. The Servlet container allows registering Filters using its own standards, but it is not aware of Spring defined Beans. DelegatingFilterProxy can be registered via standard Servlet container mechanisms, but delegate all the work to a Spring Bean that implements `Filter`.
+
+
 1. The DelegatingFilterProxy delegates to `springSecurityFilterChain` which is a `FilterChainProxy`.
 
 2. The `FilterChainProxy` contains all the security logic arranged internally as a chain (or chains) of filters.
@@ -48,3 +53,4 @@ This chain of filters has the following key responsibilities:
 - enforcing authorization
 - managing logout
 - maintaining SecurityContext in HttpSession
+
